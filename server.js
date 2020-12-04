@@ -7,9 +7,9 @@ const express = require("express");
 const app = express();
 var OpenTok = require('opentok');
 
-var apikey="46927054";
-var secret="d8cc30d5f1391cc043f75c06346706dddfe9c1fc";
-var sessionid="2_MX40NjkyNzA1NH5-MTYwNjk4NjEyNzQ4Nn4yLzFPM29VVzlYdzB2RUpScXZDRDBnVWN-fg";
+var apikey=process.env.APIKEY;
+var secret=process.env.SECRET;
+var sessionid=process.env.SESSION;
 var opentok = OpenTok(apikey,secret)
 
 app.use(express.static("public"));
@@ -29,6 +29,6 @@ app.get("/opentokFilters/token", (request, response) => {
 });
 
 // listen for requests :)
-const listener = app.listen(8026, () => {
+const listener = app.listen(process.env.PORT || 8026, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
