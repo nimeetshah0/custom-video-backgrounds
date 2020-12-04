@@ -254,16 +254,8 @@ async function bindPage() {
     tempcanvas.height = FRAME_HEIGHT;
     tempctx.drawImage(img,0,0,tempcanvas.width,tempcanvas.height);
     bgImageData = tempctx.getImageData(0, 0, FRAME_WIDTH, FRAME_HEIGHT).data;
-
-    bgvideo = document.createElement("video");
-    bgvideo.src = "assets/bevel.mp4";
-    bgvideo.muted = true;
-    bgvideo.loop = true;
-    bgvideo.onloadedmetadata = function() {
-      	console.log("Metadata for video loaded");
-  	segmentBodyInRealTime();     
-	start();
-    };
+    segmentBodyInRealTime();     
+    start();
   });
 
   img.src = 'assets/wall.jpg';
